@@ -20,7 +20,7 @@ from math import sqrt
 
 def factorList(number):
     factors = []
-    for i in range(1, int(sqrt(number + 1))):
+    for i in range(1, int(sqrt(number)) + 1):
         if number % i == 0:
             factors.append(i)
             factors.append(number/i)
