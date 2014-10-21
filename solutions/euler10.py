@@ -4,18 +4,17 @@
 from math import sqrt
 
 
-def factorList(number):
-    factors = []
+def isPrime(number):
+    prime = True
     #ignore 1 as it isn't prime and skip even numbers
     for i in range(3, int(sqrt(number)) + 1, 2):
             if number % i == 0:
-                factors.append(i)
-                factors.append(number/i)
+                prime = False
                 break
-    return factors
+    return prime
 
 primes = [2]
 for i in range(3, 2000000, 2):
-    if len(factorList(i)) == 0:
+    if isPrime(i):
         primes.append(i)
 print sum(primes)
