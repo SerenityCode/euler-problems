@@ -11,6 +11,7 @@ def factorList(number):
             if number % i == 0:
                 factors.append(i)
                 factors.append(number/i)
+                break
     return factors
 
 primes = [2]
