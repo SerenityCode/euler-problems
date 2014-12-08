@@ -36,9 +36,7 @@ def numToLetterCount(number):
 
     if number < 1000:
         split = str(number)
-
         numString = integers[int(split[0])-1] + 'hundred'
-
         if int(split[1]) > 0 or int(split[2]) > 0:
             numString += 'and'
 
