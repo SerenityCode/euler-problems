@@ -11,44 +11,38 @@
 
 
 # I'm sure you could use a multiple dimension array here but lets keep it simple
-integers = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
-            'nine']
-singleTens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
-              'sixteen', 'seventeen', 'eighteen', 'nineteen']
+unique = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
+          'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
+          'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
 multipleTens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy',
                 'eighty', 'ninety']
 
 def numToLetterCount(number):
-    if number < 10:
-        return len(integers[i-1])
-
     if number < 20:
-        return len(singleTens[i-10])
+        return len(unique[i-1])
 
     if number < 100:
         # split the number and return the word for each part
         split = str(number)
         if int(split[1]) > 0:
             return len(multipleTens[int(split[0])-2]) \
-                   + len(integers[int(split[1])-1])
+                   + len(unique[int(split[1])-1])
         else:
             return len(multipleTens[int(split[0])-2])
 
     if number < 1000:
         split = str(number)
-        numString = integers[int(split[0])-1] + 'hundred'
-        if int(split[1]) > 0 or int(split[2]) > 0:
+        numString = unique[int(split[0])-1] + 'hundred'
+        if int(split[1:]) > 0:
             numString += 'and'
-
-        if int(split[1:]) >= 10 and int(split[1:]) < 20:
+        if int(split[1:]) > 0 and int(split[1:]) < 20:
             # use eleven, twelve etc rather than tenone, tentwo
-            numString += singleTens[int(split[1:])-10]
+            numString += unique[int(split[1:])-1]
         else:
             if int(split[1]) > 1:
                 numString += multipleTens[int(split[1])-2]
             if int(split[2]) > 0:
-                numString += integers[int(split[2])-1]
-
+                numString += unique[int(split[2])-1]
         return len(numString)
 
     # number is one thousand which is 11 characters
